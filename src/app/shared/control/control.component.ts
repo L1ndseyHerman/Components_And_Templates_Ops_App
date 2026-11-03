@@ -8,6 +8,7 @@ import {
   ElementRef,
   ContentChild,
   contentChild,
+  AfterContentInit,
 } from '@angular/core';
 
 @Component({
@@ -22,7 +23,7 @@ import {
     '(click)': 'onClick()',
   },
 })
-export class ControlComponent {
+export class ControlComponent implements AfterContentInit {
   //@HostBinding('class') className = 'control';
 
   //@HostListener('click') onClick() {
@@ -37,6 +38,8 @@ export class ControlComponent {
 
   private control =
     contentChild<ElementRef<HTMLInputElement | HTMLTextAreaElement>>('input');
+
+  ngAfterContentInit() {}
 
   onClick() {
     console.log('Clicked!');
