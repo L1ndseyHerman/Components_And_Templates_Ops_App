@@ -9,6 +9,8 @@ import {
   ContentChild,
   contentChild,
   AfterContentInit,
+  afterRender,
+  afterNextRender,
 } from '@angular/core';
 
 @Component({
@@ -38,6 +40,16 @@ export class ControlComponent implements AfterContentInit {
 
   private control =
     contentChild<ElementRef<HTMLInputElement | HTMLTextAreaElement>>('input');
+
+  constructor() {
+    afterRender(() => {
+      console.log('afterRender');
+    });
+
+    afterNextRender(() => {
+      console.log('afterNextRender');
+    });
+  }
 
   ngAfterContentInit() {}
 
